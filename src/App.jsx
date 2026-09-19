@@ -97,17 +97,17 @@ export default function FlashcardApp() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 text-gray-900">
+    <div className="min-h-screen w-full bg-gray-950 text-gray-100">
       <div className="mx-auto max-w-3xl px-4 py-6">
         <h1 className="text-3xl font-extrabold tracking-tight">Voice & Wellbeing — 100 Flashcards</h1>
-        <p className="text-sm text-gray-600 mt-1">Space = Flip • → Correct • ← Again • S Shuffle • R Reset</p>
+        <p className="text-sm text-gray-300 mt-1">Space = Flip • → Correct • ← Again • S Shuffle • R Reset</p>
 
-        <div className="mt-4 rounded-3xl bg-white border shadow p-6 md:p-8 relative">
+        <div className="mt-4 rounded-3xl bg-gray-900 border border-gray-800 shadow p-6 md:p-8 relative">
           {!currentCard ? (
-            <div className="text-center py-12 text-gray-500">Cards will appear here.</div>
+            <div className="text-center py-12 text-gray-400">Cards will appear here.</div>
           ) : (
             <div className="flex flex-col items-center">
-              <div className="w-full flex items-center justify-between text-sm text-gray-600 mb-2">
+              <div className="w-full flex items-center justify-between text-sm text-gray-300 mb-2">
                 <span>Progress: {progress.seen}/{progress.total} • ✅ {correctCount} • ↩︎ {againCount}</span>
                 <span className="text-xs">Session {new Date(sessionId).toLocaleString()}</span>
               </div>
@@ -115,36 +115,36 @@ export default function FlashcardApp() {
               {!typeMode ? (
                 <button
                   onClick={() => setFlipped(f => !f)}
-                  className="w-full min-h-[180px] rounded-2xl border bg-gradient-to-b from-gray-50 to-white px-6 py-8 text-left shadow hover:shadow-md focus:outline-none"
+                  className="w-full min-h-[180px] rounded-2xl border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 px-6 py-8 text-left shadow hover:shadow-md focus:outline-none"
                   title="Space to flip"
                 >
-                  <div className="text-sm text-indigo-600 font-semibold tracking-wide mb-2">{flipped ? "Answer" : "Question"}</div>
+                  <div className="text-sm text-indigo-300 font-semibold tracking-wide mb-2">{flipped ? "Answer" : "Question"}</div>
                   <div className="text-xl leading-relaxed">{flipped ? currentCard.back : currentCard.front}</div>
                 </button>
               ) : (
-                <div className="w-full min-h-[180px] rounded-2xl border bg-gradient-to-b from-gray-50 to-white px-6 py-6 text-left shadow">
-                  <div className="text-sm text-indigo-600 font-semibold tracking-wide mb-2">Question</div>
+                <div className="w-full min-h-[180px] rounded-2xl border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 px-6 py-6 text-left shadow">
+                  <div className="text-sm text-indigo-300 font-semibold tracking-wide mb-2">Question</div>
                   <div className="text-lg mb-4">{currentCard.front}</div>
                   {!checked ? (
                     <div className="flex gap-2 items-center">
                       <input
                         type="text"
-                        className="min-w-0 flex-1 border rounded-lg px-2 py-1"
+                        className="min-w-0 flex-1 border border-gray-600 bg-gray-950 text-gray-100 placeholder:text-gray-400 rounded-lg px-2 py-1"
                         placeholder="Type your answer"
                         value={typedAnswer}
                         onChange={(e)=>setTypedAnswer(e.target.value)}
                         onKeyDown={(e)=>{ if(e.key==="Enter") checkTyped(); }}
                         autoFocus
                       />
-                      <button onClick={checkTyped} className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-700 text-sm">Check</button>
+                      <button onClick={checkTyped} className="px-3 py-1 rounded-lg bg-indigo-900 text-indigo-200 hover:bg-indigo-800 text-sm">Check</button>
                     </div>
                   ) : (
                     <div className="mt-2">
-                      <div className="text-sm font-semibold text-green-700">Answer:</div>
+                      <div className="text-sm font-semibold text-green-400">Answer:</div>
                       <div className="text-lg mb-2">{currentCard.back}</div>
                       <div className="flex gap-2">
-                        <button onClick={() => mark(false)} className="px-4 py-2 rounded-xl border bg-white shadow hover:shadow-md text-sm">Again (←)</button>
-                        <button onClick={() => mark(true)} className="px-4 py-2 rounded-xl border bg-white shadow hover:shadow-md text-sm">Correct (→)</button>
+                        <button onClick={() => mark(false)} className="px-4 py-2 rounded-xl border border-gray-700 bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md text-sm">Again (←)</button>
+                        <button onClick={() => mark(true)} className="px-4 py-2 rounded-xl border border-gray-700 bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md text-sm">Correct (→)</button>
                       </div>
                     </div>
                   )}
@@ -153,19 +153,19 @@ export default function FlashcardApp() {
 
               {!typeMode && (
                 <div className="mt-4 flex gap-2">
-                  <button onClick={() => mark(false)} className="px-4 py-2 rounded-xl border bg-white shadow hover:shadow-md text-sm">Again (←)</button>
-                  <button onClick={() => setFlipped(f => !f)} className="px-4 py-2 rounded-xl border bg-white shadow hover:shadow-md text-sm">Flip (Space)</button>
-                  <button onClick={() => mark(true)} className="px-4 py-2 rounded-xl border bg-white shadow hover:shadow-md text-sm">Correct (→)</button>
+                  <button onClick={() => mark(false)} className="px-4 py-2 rounded-xl border border-gray-700 bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md text-sm">Again (←)</button>
+                  <button onClick={() => setFlipped(f => !f)} className="px-4 py-2 rounded-xl border border-gray-700 bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md text-sm">Flip (Space)</button>
+                  <button onClick={() => mark(true)} className="px-4 py-2 rounded-xl border border-gray-700 bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md text-sm">Correct (→)</button>
                 </div>
               )}
 
               <div className="mt-4 flex gap-2">
-                <button onClick={shuffle} className="px-3 py-2 rounded-xl bg-white shadow hover:shadow-md border text-sm">Shuffle</button>
-                <button onClick={resetSession} className="px-3 py-2 rounded-xl bg-white shadow hover:shadow-md border text-sm">Reset</button>
-                <button onClick={()=>{setTypeMode(m=>!m); resetSession();}} className="px-3 py-2 rounded-xl bg-white shadow hover:shadow-md border text-sm">{typeMode ? "Exit Type Mode" : "Type Mode"}</button>
+                <button onClick={shuffle} className="px-3 py-2 rounded-xl bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md border border-gray-700 text-sm">Shuffle</button>
+                <button onClick={resetSession} className="px-3 py-2 rounded-xl bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md border border-gray-700 text-sm">Reset</button>
+                <button onClick={()=>{setTypeMode(m=>!m); resetSession();}} className="px-3 py-2 rounded-xl bg-gray-800 shadow hover:bg-gray-700 hover:shadow-md border border-gray-700 text-sm">{typeMode ? "Exit Type Mode" : "Type Mode"}</button>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-500">
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400">
                 <span>Up next</span>
                 <ol aria-label="Upcoming cards" className="flex flex-wrap gap-2">
                   {upcomingCards.map(card => (
@@ -175,8 +175,8 @@ export default function FlashcardApp() {
                       className={classNames(
                         "rounded-lg border px-2 py-1 font-medium",
                         card.id === reinsertedCardId
-                          ? "border-orange-400 bg-orange-100 text-orange-800"
-                          : "border-gray-200 bg-gray-50 text-gray-600",
+                          ? "border-orange-600 bg-orange-950 text-orange-200"
+                          : "border-gray-700 bg-gray-950 text-gray-300",
                       )}
                     >
                       #{card.id}
@@ -185,7 +185,7 @@ export default function FlashcardApp() {
                 </ol>
               </div>
 
-              <p className="mt-3 text-xs text-gray-500 text-center">Cue: Jaw loose • Ribs expand • Tongue leads • Tone rides the breath.</p>
+              <p className="mt-3 text-xs text-gray-400 text-center">Cue: Jaw loose • Ribs expand • Tongue leads • Tone rides the breath.</p>
             </div>
           )}
           {toast && (
